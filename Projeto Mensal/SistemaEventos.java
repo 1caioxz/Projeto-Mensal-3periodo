@@ -7,25 +7,65 @@ public class SistemaEventos {
     private static List<Evento> eventos = new ArrayList<>();
 
     public static void main(String[] args) {
+
+        System.out.println("\nBem vindo(a) ao sistema de gestão de eventos!");
         int opcao;
         do {
-            System.out.println("\n1. Cadastrar Palestrante\n2. Cadastrar Participante\n3. Criar Evento\n4. Listar Pessoas\n5. Listar Eventos\n6. Editar Palestrante\n7. Editar Participante\n8. Editar Evento\n" + //
-                                "9. Excluir Palestrante\n10. Excluir Participante\n11. Excluir Evento\n 12. Sair");
+            System.out.println("======================================\n|     Sistema de Gestão de eventos   |\n=================MENU=================\n1. Cadastrar Palestrante\n2. Cadastrar Participante\n3. Criar Evento\n4. Listar Pessoas\n5. Listar Eventos\n6. Editar Palestrante\n7. Editar Participante\n8. Editar Evento\n" + //
+                                "9. Excluir Palestrante\n10. Excluir Participante\n11. Excluir Evento\n12. Sair\n======================================\nDigite a opção desejada: ");
             opcao = scanner.nextInt();
             scanner.nextLine(); 
 
             switch (opcao) {
-                case 1 -> cadastrarPalestrante();
-                case 2 -> cadastrarParticipante();
-                case 3 -> criarEvento();
-                case 4 -> listarPessoas();
-                case 5 -> listarEventos();
-                case 6 -> editarPalestrante();
-                case 7 -> editarParticipante();
-                case 8 -> editarEvento();
-                case 9 -> excluirPalestrante();
-                case 10 -> excluirParticipante();
-                case 11 -> excluirEvento();
+                case 1 -> {
+                    cadastrarPalestrante();
+                    System.out.println("Palestrante cadastrado!");
+                    pausar();
+                }
+                case 2 -> {
+                    cadastrarParticipante();
+                    System.out.println("Participante cadastrado!");
+                    pausar();
+                }
+                case 3 -> {
+                    criarEvento();
+                    System.out.println("Evento criado!");
+                    pausar();
+                }
+                case 4 -> {
+                    System.out.println("Listando pessoas...");
+                    listarPessoas();
+                    pausar();
+                }
+                case 5 -> {
+                    System.out.println("Listando Eventos...");
+                    listarEventos();
+                    pausar();
+                }
+                case 6 -> {
+                    editarPalestrante();
+                    pausar();
+                }
+                case 7 -> {
+                    editarParticipante();
+                    pausar();
+                }
+                case 8 -> {
+                    editarEvento();
+                    pausar();
+                }
+                case 9 -> {
+                    excluirPalestrante();
+                    pausar();
+                }
+                case 10 -> {
+                    excluirParticipante();
+                    pausar();
+                }
+                case 11 -> {
+                    excluirEvento();
+                    pausar();
+                }
                 case 12 -> System.out.println("Saindo...");
                 default -> System.out.println("Opção inválida!");
             }
@@ -48,7 +88,7 @@ public class SistemaEventos {
     }
 
     // Edita palestrantes cadastrados
-    System.out.println("Escolha o palestrante que deseja editar:");
+    System.out.println("===Editar palestrante===\nEscolha o palestrante que deseja editar:");
     for (int i = 0; i < palestrantes.size(); i++) {
         System.out.println(i + ". " + palestrantes.get(i).getNome());
     }
@@ -105,7 +145,7 @@ public class SistemaEventos {
     }
 
     // Exibe palestrantes cadastrados
-    System.out.println("Escolha o palestrante que deseja editar:");
+    System.out.println("===Editar participante===\nEscolha o participante que deseja editar:");
     for (int i = 0; i < participantes.size(); i++) {
         System.out.println(i + ". " + participantes.get(i).getNome());
     }
@@ -144,7 +184,7 @@ public class SistemaEventos {
         participanteEscolhido.email = novoEmail;
     }
 
-    System.out.println("Palestrante editado com sucesso!");
+    System.out.println("Participante editado com sucesso!");
 }
 
     private static void editarEvento() {
@@ -155,7 +195,7 @@ public class SistemaEventos {
     }
 
     // Exibir todos os eventos cadastrados
-    System.out.println("Escolha o evento que deseja editar:");
+    System.out.println("===Editar eventos===\nEscolha o evento que deseja editar:");
     for (int i = 0; i < eventos.size(); i++) {
         System.out.println(i + ". " + eventos.get(i).titulo);
     }
@@ -221,6 +261,7 @@ public class SistemaEventos {
 
     
     private static void cadastrarPalestrante() {
+        System.out.println("===Cadastrar palestrante===");
         System.out.print("Nome: ");
         String nome = scanner.nextLine();
         System.out.print("Idade: ");
@@ -232,6 +273,7 @@ public class SistemaEventos {
     }
 
     private static void cadastrarParticipante() {
+        System.out.println("===Cadastrar participante===");
         System.out.print("Nome: ");
         String nome = scanner.nextLine();
         System.out.print("Idade: ");
@@ -243,6 +285,7 @@ public class SistemaEventos {
     }
 
     private static void criarEvento() {
+        System.out.println("===Criar evento===");
         System.out.print("Título do evento: ");
         String titulo = scanner.nextLine();
         System.out.print("Data do evento: ");
@@ -277,12 +320,14 @@ public class SistemaEventos {
     }
 
     private static void listarPessoas() {
+        System.out.println("===Lista de pessoas===");
         for (Pessoa p : pessoas) {
             p.exibirInfo();
         }
     }
 
     private static void listarEventos() {
+        System.out.println("===Lista de eventos===");
         for (Evento e : eventos) {
             e.exibirInfo();
         }
@@ -372,4 +417,15 @@ public class SistemaEventos {
         eventos.remove(escolha);
         System.out.println("Evento excluído com sucesso!");
     }
+
+    //pausar até apertar enter
+    public static void pausar() {
+        System.out.println("Aperte Enter para continuar...");
+        scanner.nextLine();
+    }
+
+
+
+
 }
+
